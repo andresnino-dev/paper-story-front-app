@@ -56,7 +56,6 @@ export const CheckoutView = () => {
                     <div className="bg-white p-8 rounded-2xl text-center max-w-sm mx-4 shadow-md">
                         <CheckCircle size={60} className="mx-auto text-green-500 mb-4" />
                         <h3 className="text-2xl font-semibold text-slate-800 mb-2">¡Pedido realizado!</h3>
-                        <p className="text-sm text-gray-500 mt-4 mb-6">(Reemplazar esto con window.alert() en código local)</p>
                         <Button onClick={completeAlert} className="w-full">Aceptar</Button>
                     </div>
                 </div>
