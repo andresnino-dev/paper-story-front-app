@@ -1,10 +1,13 @@
 import { useAuth } from '../../hooks/useAuth.js';
 import { Button } from '../../components/ui/Button.jsx';
 import { LogOut } from 'lucide-react';
-import { MOCK_ORDERS } from '../../mocks/orders.js';
+import { useOrders } from '../../hooks/useOrders.js';
+import { useUser } from '../../hooks/useUser.js';
 
 export const ProfileView = () => {
-    const { user, logout } = useAuth();
+    const { logout } = useAuth();
+    const { user } = useUser();
+    const { orders } = useOrders();
 
     return (
         <div className="max-w-4xl mx-auto py-12 px-6">
@@ -24,7 +27,7 @@ export const ProfileView = () => {
                 <div className="col-span-1 md:col-span-2 bg-white p-6 rounded-2xl shadow-sm">
                     <h3 className="text-xl font-medium mb-6 text-slate-800">Últimos 5 pedidos</h3>
                     <div className="space-y-4">
-                        {MOCK_ORDERS.map(order => (
+                        {orders.map(order => (
                             <div key={order.id} className="flex flex-wrap justify-between items-center p-4 rounded-lg hover:bg-slate-50">
                                 <div>
                                     <p className="font-semibold text-slate-800">{order.id}</p>

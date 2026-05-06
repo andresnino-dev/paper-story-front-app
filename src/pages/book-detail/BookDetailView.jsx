@@ -2,13 +2,14 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { BookOpen, CheckCircle, X, ShoppingCart, ChevronRight } from 'lucide-react';
 import { Button } from '../../components/ui/Button.jsx';
 import { useCart } from '../../hooks/useCart.js';
-import { MOCK_BOOKS } from '../../mocks/books.js';
+import { useBooks } from '../../hooks/useBooks.js';
 
 export const BookDetailView = () => {
     const navigate = useNavigate();
     const { id } = useParams();
     const { addToCart } = useCart();
-    const book = MOCK_BOOKS.find(b => b.id + '' === id) || MOCK_BOOKS[0];
+    const { books, getBookById } = useBooks();
+    const book = getBookById(id) || books[0];
 
     return (
         <div className="max-w-4xl mx-auto py-12 px-6">

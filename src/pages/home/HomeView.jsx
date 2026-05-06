@@ -1,16 +1,17 @@
 import { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search, BookOpen } from 'lucide-react';
-import { MOCK_BOOKS } from '../../mocks/books.js';
+import { useBooks } from '../../hooks/useBooks.js';
 
 export const HomeView = () => {
     const navigate = useNavigate();
     const [searchTerm, setSearchTerm] = useState('');
+    const { books } = useBooks();
     const filteredBooks = useMemo(() => {
-        return MOCK_BOOKS.filter(book =>
+        return books.filter(book =>
             book.title.toLowerCase().includes(searchTerm.toLowerCase())
         );
-    }, [searchTerm]);
+    }, [books, searchTerm]);
 
     return (
         <div className="max-w-6xl mx-auto py-12 px-6">

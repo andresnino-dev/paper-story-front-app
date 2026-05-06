@@ -1,15 +1,16 @@
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GlobalContext } from '../context/GlobalContext.jsx';
-import {MOCK_USER} from "../mocks/user.js";
+import { useUser } from './useUser.js';
 
 export const useAuth = () => {
     const navigate = useNavigate();
     const { user, setUser } = useContext(GlobalContext);
+    const { user: defaultUser } = useUser();
 
     const login = (email) => {
         if (email) {
-            setUser(MOCK_USER);
+            setUser(defaultUser);
             navigate('/profile');
         }
     };
