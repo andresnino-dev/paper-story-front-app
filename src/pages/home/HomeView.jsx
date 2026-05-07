@@ -6,7 +6,7 @@ import { useBooks } from '../../hooks/useBooks.js';
 export const HomeView = () => {
     const navigate = useNavigate();
     const [searchTerm, setSearchTerm] = useState('');
-    const { books } = useBooks();
+    const { books, loading } = useBooks();
     const filteredBooks = useMemo(() => {
         return books.filter(book =>
             book.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -28,7 +28,9 @@ export const HomeView = () => {
 
             <h2 className="text-2xl font-semibold tracking-tight text-slate-800 mb-8">Catálogo de Libros</h2>
 
-            {filteredBooks.length === 0 ? (
+            {loading ? (
+                <div className="text-center text-gray-500 py-12">Cargando libros...</div>
+            ) : filteredBooks.length === 0 ? (
                 <div className="text-center text-gray-500 py-12">No se encontraron libros.</div>
             ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">

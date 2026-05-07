@@ -6,10 +6,10 @@ import { useUser } from './useUser.js';
 export const useAuth = () => {
     const navigate = useNavigate();
     const { user, setUser } = useContext(GlobalContext);
-    const { user: defaultUser } = useUser();
+    const { user: defaultUser, loading: authLoading } = useUser();
 
     const login = (email) => {
-        if (email) {
+        if (email && defaultUser) {
             setUser(defaultUser);
             navigate('/profile');
         }
@@ -20,5 +20,5 @@ export const useAuth = () => {
         navigate('/home');
     };
 
-    return { user, login, logout, isAuthenticated: !!user };
+    return { user, login, logout, isAuthenticated: !!user, authLoading };
 };

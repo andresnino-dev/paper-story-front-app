@@ -8,8 +8,25 @@ export const BookDetailView = () => {
     const navigate = useNavigate();
     const { id } = useParams();
     const { addToCart } = useCart();
-    const { books, getBookById } = useBooks();
-    const book = getBookById(id) || books[0];
+    const { getBookById, loading } = useBooks();
+    const book = getBookById(id);
+
+    if (loading) {
+        return (
+            <div className="max-w-4xl mx-auto py-12 px-6 text-center text-gray-500">
+                Cargando detalle del libro...
+            </div>
+        );
+    }
+
+    if (!book) {
+        return (
+            <div className="max-w-4xl mx-auto py-12 px-6 text-center">
+                <h2 className="text-2xl font-semibold text-slate-800 mb-6">Libro no encontrado</h2>
+                <Button onClick={() => navigate('/home')}>Volver al catálogo</Button>
+            </div>
+        );
+    }
 
     return (
         <div className="max-w-4xl mx-auto py-12 px-6">

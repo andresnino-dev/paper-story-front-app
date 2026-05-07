@@ -6,8 +6,16 @@ import { useUser } from '../../hooks/useUser.js';
 
 export const ProfileView = () => {
     const { logout } = useAuth();
-    const { user } = useUser();
-    const { orders } = useOrders();
+    const { user, loading: userLoading } = useUser();
+    const { orders, loading: ordersLoading } = useOrders();
+
+    if (userLoading || ordersLoading) {
+        return (
+            <div className="max-w-4xl mx-auto py-12 px-6 text-center text-gray-500">
+                Cargando perfil...
+            </div>
+        );
+    }
 
     return (
         <div className="max-w-4xl mx-auto py-12 px-6">

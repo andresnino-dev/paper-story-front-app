@@ -4,7 +4,7 @@ import { User } from 'lucide-react';
 import { Button } from '../../components/ui/Button.jsx';
 
 export const LoginView = () => {
-    const { login } = useAuth();
+    const { login, authLoading } = useAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -41,7 +41,9 @@ export const LoginView = () => {
                             className="w-full bg-slate-50 p-3 rounded-lg focus:ring-2 focus:ring-slate-100 outline-none text-slate-800"
                         />
                     </div>
-                    <Button type="submit" className="w-full py-3 mt-4">Ingresar a mi cuenta</Button>
+                    <Button type="submit" className="w-full py-3 mt-4" disabled={authLoading}>
+                        {authLoading ? 'Preparando sesión...' : 'Ingresar a mi cuenta'}
+                    </Button>
                 </form>
             </div>
         </div>
