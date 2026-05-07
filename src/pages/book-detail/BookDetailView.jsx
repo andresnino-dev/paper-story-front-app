@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { BookOpen, CheckCircle, X, ShoppingCart, ChevronRight } from 'lucide-react';
 import { Button } from '../../components/ui/Button.jsx';
+import { Loader } from '../../components/ui/Loader.jsx';
 import { useCart } from '../../hooks/useCart.js';
 import { useBooks } from '../../hooks/useBooks.js';
 
@@ -13,8 +14,8 @@ export const BookDetailView = () => {
 
     if (loading) {
         return (
-            <div className="max-w-4xl mx-auto py-12 px-6 text-center text-gray-500">
-                Cargando detalle del libro...
+            <div className="max-w-4xl mx-auto py-12 px-6">
+                <Loader label="Cargando detalle del libro..." />
             </div>
         );
     }

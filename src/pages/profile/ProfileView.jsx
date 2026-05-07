@@ -1,5 +1,6 @@
 import { useAuth } from '../../hooks/useAuth.js';
 import { Button } from '../../components/ui/Button.jsx';
+import { Loader } from '../../components/ui/Loader.jsx';
 import { LogOut } from 'lucide-react';
 import { useOrders } from '../../hooks/useOrders.js';
 import { useUser } from '../../hooks/useUser.js';
@@ -11,8 +12,8 @@ export const ProfileView = () => {
 
     if (userLoading || ordersLoading) {
         return (
-            <div className="max-w-4xl mx-auto py-12 px-6 text-center text-gray-500">
-                Cargando perfil...
+            <div className="max-w-4xl mx-auto py-12 px-6">
+                <Loader label="Cargando perfil..." />
             </div>
         );
     }

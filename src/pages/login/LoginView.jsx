@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useAuth } from '../../hooks/useAuth.js';
 import { User } from 'lucide-react';
 import { Button } from '../../components/ui/Button.jsx';
+import { Loader } from '../../components/ui/Loader.jsx';
 
 export const LoginView = () => {
     const { login, authLoading } = useAuth();
@@ -41,8 +42,13 @@ export const LoginView = () => {
                             className="w-full bg-slate-50 p-3 rounded-lg focus:ring-2 focus:ring-slate-100 outline-none text-slate-800"
                         />
                     </div>
-                    <Button type="submit" className="w-full py-3 mt-4" disabled={authLoading}>
-                        {authLoading ? 'Preparando sesión...' : 'Ingresar a mi cuenta'}
+                    <Button type="submit" className="w-full py-3 mt-4 flex items-center justify-center gap-2" disabled={authLoading}>
+                        {authLoading ? (
+                            <>
+                                <Loader inline size="sm" label="" />
+                                <span>Preparando sesión...</span>
+                            </>
+                        ) : 'Ingresar a mi cuenta'}
                     </Button>
                 </form>
             </div>

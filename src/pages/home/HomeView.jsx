@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search, BookOpen } from 'lucide-react';
 import { useBooks } from '../../hooks/useBooks.js';
+import { Loader } from '../../components/ui/Loader.jsx';
 
 export const HomeView = () => {
     const navigate = useNavigate();
@@ -29,7 +30,7 @@ export const HomeView = () => {
             <h2 className="text-2xl font-semibold tracking-tight text-slate-800 mb-8">Catálogo de Libros</h2>
 
             {loading ? (
-                <div className="text-center text-gray-500 py-12">Cargando libros...</div>
+                <Loader label="Cargando libros..." />
             ) : filteredBooks.length === 0 ? (
                 <div className="text-center text-gray-500 py-12">No se encontraron libros.</div>
             ) : (
