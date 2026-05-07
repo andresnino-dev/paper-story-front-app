@@ -8,6 +8,7 @@ import {HomeView} from './pages/home/HomeView';
 import {BookDetailView} from './pages/book-detail/BookDetailView';
 import {CheckoutView} from './pages/checkout/CheckoutView';
 import {ProfileView} from './pages/profile/ProfileView';
+import {NotFoundView} from './pages/not-found/NotFoundView';
 
 export const AppRouter = () => (
     <Router>
@@ -19,6 +20,7 @@ export const AppRouter = () => (
             <Route path="/book/:id" element={<BookDetailView/>}/>
             <Route path="/checkout" element={<ProtectedRoute><CheckoutView/></ProtectedRoute>}/>
             <Route path="/profile" element={<ProtectedRoute><ProfileView/></ProtectedRoute>}/>
+            <Route path="*" element={<NotFoundView/>}/>
         </Routes>
         <CartDrawer/>
     </Router>
