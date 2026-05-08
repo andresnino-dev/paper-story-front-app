@@ -14,14 +14,12 @@ export const CartDrawer = () => {
 
     return (
         <>
-            {/* Overlay: sutil para mantener foco en el panel, con blur ligero */}
             <div
                 className="fixed inset-0 bg-slate-900/30 backdrop-blur-sm z-50"
                 onClick={() => setIsCartOpen(false)}
                 aria-hidden="true"
             />
 
-            {/* Drawer panel: panel blanco, bordes redondeados en el lado izquierdo, sombra tenue */}
             <div className="fixed inset-y-0 right-0 w-full max-w-md bg-white z-50 flex flex-col transform transition-transform duration-300 shadow-sm rounded-l-2xl overflow-hidden">
                 <div className="px-6 py-5 flex items-center justify-between bg-white">
                     <h2 className="text-lg font-semibold tracking-tight text-slate-800 flex items-center gap-3">
@@ -45,7 +43,6 @@ export const CartDrawer = () => {
                             {cart.map(item => (
                                 <div key={item.id} className="flex items-start gap-4 bg-white rounded-2xl shadow-sm p-4 hover:shadow-md hover:-translate-y-0.5 transition-transform relative">
                                     <div className={`w-20 h-28 sm:w-24 sm:h-32 ${item.cover} rounded-xl flex items-center justify-center overflow-hidden shrink-0`}>
-                                        {/* Placeholder icon if cover is not an image */}
                                         <BookOpen size={28} className="text-slate-400" />
                                     </div>
 

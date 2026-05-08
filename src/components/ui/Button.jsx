@@ -1,7 +1,5 @@
 export const Button = ({ children, onClick, variant = 'primary', className = '', disabled = false, type = 'button' }) => {
-    // Base style updated to a cleaner, slightly larger pill for a modern minimal look.
     const baseStyle = "px-5 py-3 rounded-xl font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-sm";
-    // Use slate-900 as the primary accent (negro mate) to match the new design language.
     const variants = {
         primary: "bg-slate-900 text-white hover:bg-slate-800",
         secondary: "bg-slate-50 text-slate-800 hover:bg-slate-100",
